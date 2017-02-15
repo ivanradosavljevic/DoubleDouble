@@ -12,20 +12,27 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.List;
 
 import util.Post;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView tv;
     String restUrl;
+    static List<Post> postList = new ArrayList<>();
+
+    public static List<Post> getPostList() {
+        return postList;
+    }
+
+    public static void setPostList(List<Post> postList) {
+        MainActivity.postList = postList;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        tv = (TextView) findViewById(R.id.textview);
         restUrl = "http://www.doubledouble.rs/json-page/";
         new Parser().execute(restUrl);
     }
@@ -60,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(List<Post> posts) {
-            //tv.setText(Html.fromHtml(posts));
             progressDialog.dismiss();
+            postList = posts;
         }
     }
 }

@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Created by Ivan Radosavljevic on 8.2.2017.
  */
-public class Post extends Util implements Serializable {
+public class Post implements Serializable {
 
 
     String id;
@@ -79,32 +79,5 @@ public class Post extends Util implements Serializable {
         this.content = content;
     }
 
-    @Override
-    public Util readMessage(JsonReader reader) throws IOException {
 
-        Post post = new Post();
-        reader.beginObject();
-
-        while (reader.hasNext()) {
-            String text = reader.nextName();
-            if (text.equals("id")) {
-                post.setId(reader.nextString());
-            } else if (text.equals("name")) {
-                post.setName(reader.nextString());
-            } else if (text.equals("author")) {
-                post.setAuthor(reader.nextString());
-            } else if (text.equals("content")) {
-                post.setContent(reader.nextString());
-            } else if (text.equals("excerpt")) {
-                post.setExcerpt(reader.nextString());
-            } else if (text.equals("thumbnail")) {
-                post.setThumbnail(reader.nextString());
-            } else {
-                reader.skipValue();
-            }
-
-        }
-        reader.endObject();
-        return post;
-    }
 }
