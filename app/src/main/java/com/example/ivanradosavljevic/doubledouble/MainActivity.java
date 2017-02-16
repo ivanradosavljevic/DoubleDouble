@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         //parsing
         restUrl = "http://www.doubledouble.rs/json-page/";
         new Parser().execute(restUrl);

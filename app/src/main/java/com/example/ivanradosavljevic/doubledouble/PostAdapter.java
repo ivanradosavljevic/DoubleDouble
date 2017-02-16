@@ -35,7 +35,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
             name = (TextView) view.findViewById(R.id.title);
             author = (TextView) view.findViewById(R.id.count);
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
-            overflow = (ImageView) view.findViewById(R.id.overflow);
 
         }
     }
@@ -60,13 +59,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
 
         //Load thumbnnail
         Glide.with(mContext).load(post.getThumbnail()).into(holder.thumbnail);
-        holder.overflow.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-               //imiplement click on selected page
-            }
-        });
 
     }
 
